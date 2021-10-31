@@ -60,6 +60,7 @@ router.post('/login', async (req, res) => {
         httpOnly: true
     });
 
+    console.log(token)
     res.send(user)
 });
 

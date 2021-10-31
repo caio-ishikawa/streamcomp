@@ -68,7 +68,7 @@ const Register = () => {
                         <br></br>
                         <br></br>
                         <Typography variant="subtitle2">
-                            Already have an account? Click <Link to="/register"> here </Link> to sign in.
+                            Already have an account? Click <Link to="/login"> here </Link> to sign in.
                         </Typography>
                     </div>
                 </Grid>

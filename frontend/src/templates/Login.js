@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
+import { useState } from 'react';
+import { useHistory } from 'react-router';
+import Axios from 'axios';
 
 const useStyles = makeStyles({
     text: {
@@ -23,6 +26,24 @@ const useStyles = makeStyles({
 
 const Login = () => {
     const classes = useStyles();
+    const history = useHistory();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const submitData = () => {
+        let data = {
+            username: username,
+            password: password
+        };
+
+        Axios.post('http://localhost:3002/auth/login', data)
+            .then((res) => {
+                history.push({
+                    pathname: "/content",
+                    state: res.data 
+                });
+            });
+    };
 
     return (
         <div>
@@ -33,11 +54,11 @@ const Login = () => {
                             streamcomp
                         </Typography>
                         <br></br>
-                        <TextField style={{ width: "80%"}} placeholder="Username" variant="standard"/>
-                        <TextField style={{ width: "80%"}} placeholder="Password" variant="standard"/>
+                        <TextField style={{ width: "80%"}} placeholder="Username" variant="standard" onChange={(e) => setUsername(e.target.value)}/>
+                        <TextField style={{ width: "80%"}} placeholder="Password" variant="standard" onChange={(e) => setPassword(e.target.value)}/>
                         <br></br>
                         <br></br>
-                        <Button color="inherit">Log in</Button>
+                        <Button color="inherit" onClick={submitData}>Log in</Button>
                         <br></br>
                         <br></br>
                         <Typography variant="subtitle2">

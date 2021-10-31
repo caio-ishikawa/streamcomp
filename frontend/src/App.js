@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Login from './templates/Login';
 import Homepage from './templates/Homepage';
 import Register from './templates/Register';
+import Content from './templates/Content';
+
+Axios.defaults.withCredentials = true;
 
 function App() {
 
@@ -19,6 +22,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register/>
+          </Route>
+          <Route path="/content">
+            <Content/>
           </Route>
         </Switch>
       </Router>
